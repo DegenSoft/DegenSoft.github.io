@@ -41,7 +41,8 @@ function codeOnChange() {
             return address !== '';
         })
         .map(function (address) {
-            return '"' + address + '"'
+//            return '"' + address + '"'
+            return address
         })
 
     const namesText = document.getElementById('names').value.split('\n');
@@ -53,115 +54,100 @@ function codeOnChange() {
 
     const AddressesArea = document.getElementById("addresses")
     const CodeArea = document.getElementById("code")
-    const walletsType = document.getElementById("walletsType").value
+//    const walletsType = document.getElementById("walletsType").value
+    const walletsType = 'Starknet Address'
 
     let step = 5;
     let start_address_index = 3;
     let start_name_index = 5;
 
-    if (walletsType === "EVM Address") {
-        AddressesArea.cols = 50;
-        CodeArea.cols = 108;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(3)").click();`
+    console.log('HERE')
+//    AddressesArea.cols = 70;
+//    CodeArea.cols = 128;
+//    chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
+
+
+//    let walletsType = "Starknet Address";
+
+//    if (walletsType === "EVM Address") {
+//        AddressesArea.cols = 50;
+//        CodeArea.cols = 108;
+//        chain_strings = `document.s("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(3)").click();`
+//    }
+//    else if (walletsType === "Starknet Address") {
+//        AddressesArea.cols = 70;
+//        CodeArea.cols = 128;
+//        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
+//
+//        document.querySelector("div:nth-child(4) > div.balance_okui-form-item-control > div > div > div > div").click();
+//
+//        await new Promise((resolve) => setTimeout(resolve, 50));
+//
+//        var networks = document.querySelectorAll("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div")
+//
+//        networks.forEach(function(network) {
+//          if (network.textContent === 'Starknet') {network.click()}
+//        });`
+//
+//    }
+//    const AddressesArea.cols = 70;
+//    const CodeArea.cols = 128;
+//    chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click();` // Universal address
+
+
+//    else if (walletsType === "Aptos Address") {
+//        AddressesArea.cols = 70;
+//        CodeArea.cols = 128;
+//        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
+//    }
+//    else if (walletsType === "Harmony Address") {
+//        AddressesArea.cols = 50;
+//        CodeArea.cols = 108;
+//        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
+//    }
+//    else if (walletsType === "Atom Address") {
+//        step = 6;
+//        start_name_index = 6;
+//
+//        AddressesArea.cols = 50;
+//        CodeArea.cols = 108;
+//        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
+//    }
+    var formattedText = '';
+    console.log(formattedAddresses)
+    console.log(formattedNames)
+
+    const formattedNamesArray = formattedNames.split(',').map(item => item.trim());
+    console.log(formattedNamesArray); // ["ыdw", "", "dwq"]
+
+    for (let i = 0; i < formattedAddresses.length; i++) {
+
+        formattedText += formattedAddresses[i];
+
+        if (formattedNamesArray[i] && formattedNamesArray[i].trim() !== '""') {
+            const name = formattedNamesArray[i].replace(/"/g, '');
+            formattedText += " " + name;
+        }
+
+//        if (formattedNames[i]) {
+//            formattedText += " " + formattedNames[i];
+//        }
+        formattedText += "\n";
     }
-    else if (walletsType === "Starknet Address") {
-        AddressesArea.cols = 70;
-        CodeArea.cols = 128;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address
-document.querySelector("div:nth-child(4) > div.balance_okui-form-item-control > div > div > div > div").click();
-await new Promise((resolve) => setTimeout(resolve, 50));
-var networks = document.querySelectorAll("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div")
-networks.forEach(function(network) {
-  if (network.textContent === 'Starknet') {network.click()}
-});`
-    }
-    else if (walletsType === "Aptos Address") {
-        AddressesArea.cols = 70;
-        CodeArea.cols = 128;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
-    }
-    else if (walletsType === "Harmony Address") {
-        AddressesArea.cols = 50;
-        CodeArea.cols = 108;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
-    }
-    else if (walletsType === "Atom Address") {
-        step = 6;
-        start_name_index = 6;
 
-        AddressesArea.cols = 50;
-        CodeArea.cols = 108;
-        chain_strings = `document.querySelector("div.balance_okui.balance_okui-popup.select-popup-reference > div > div > div > div > div > div > div:nth-child(2)").click(); // Universal address`
-    }
+//    const formattedText = `
+//
+//        const wallets = [
+//        ${formattedAddresses}
+//        ];
+//
+//        const names = [
+//        ${formattedNames}
+//        ];
+//
+//
+//        `;
 
-    const formattedText = `(function() {
-  const wallets = [
-${formattedAddresses}
-  ];
-
-  const names = [
-${formattedNames}
-  ];
-
-const walletSelectors = [];
-const nameSelectors = [];
-const start_address_index = ${start_address_index};
-const start_name_index = ${start_name_index};
-const step = ${step};
-
-const addButton = document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-outline-secondary")[0] // + Add button
-
-function fillInput(input, value) {
-input.setAttribute('value', value);
-input.dispatchEvent(new Event('input', { bubbles: true }));
-}
-
-async function addWallets() {
-
-document.querySelector("div.balance_okui-select-value-box").click();
-await new Promise((resolve) => setTimeout(resolve, 50));
-${chain_strings}
-document.querySelector("span.balance_okui-checkbox").click();
-
-for (let i = 0; i < wallets.length; i++) {
-  console.log(\`Добавление кошелька \${i + 1} из \${wallets.length}\`);
-
-  const addressInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(2) .balance_okui-input-input\`);
-  const nameInput = document.querySelector(\`.balance_okui-table-tbody > tr:nth-child(\${i + 2}) .balance_okui-table-cell:nth-child(3) .balance_okui-input-input\`);
-
-  fillInput(addressInput, wallets[i]);
-  await new Promise((resolve) => setTimeout(resolve, 50));
-
-  if (names.length > 0 && names[i]) {
-    fillInput(nameInput, names[i]);
-    await new Promise((resolve) => setTimeout(resolve, 50));
-  }
-
-  if (i < wallets.length - 1) {
-    addButton.click();
-    await new Promise((resolve) => setTimeout(resolve, 450));
-  }
-}
-
-document.getElementsByClassName("balance_okui balance_okui-btn btn-md btn-fill-highlight")[0].click(); // "Save addresses" button
-
-for (let i = 0; i < 16; i++) {
-  try {
-    const send_email_code = document.getElementsByClassName("balance_okui-input-code-btn ")[0];
-    send_email_code.click();
-    break;
-  } catch (error) {
-    console.log('жду кнопку Send Code для Email');
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  }
-}
-
-console.log('Завершено');
-}
-
-addWallets();
-})();
-`;
     document.getElementById('code').value = formattedText;
 
 }

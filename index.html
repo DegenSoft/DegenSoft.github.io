@@ -1,43 +1,37 @@
 <!DOCTYPE html> 
 <html>
    <head>
-      <title>😈OKX Whitelister</title>
+      <title>Wallet Manager</title>
       <meta content="no-cache">
       <link rel="icon" href="images/favicon.ico">
       <link rel="stylesheet" href="./css/styles_1_02.css">
       <script src="./js/scripts_1.19.js"></script> 
    </head>
-   <script async src="https://www.googletagmanager.com/gtag/js"></script> <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      gtag('config', 'G-G11CKNDJ7F');
-   </script>  
+
    <body>
       <div id="marquee-container">
          <marquee id="dynamic-marquee" scrollamount="20" direction="down"              style="font-size: 50px; line-height: 100%;"></marquee>
       </div>
-      <h2>Welcome, Abusers❤️</h2>
+      <h2>Welcome to wallet manager📃</h2>
       <div class="exchange_buttons">     <button onclick="showFieldsOKX()" class="okx_button"></button>     <button onclick="showFieldsBybit()" class="bybit_button"></button> </div>
       <div id="okx_fields">
-         <div class="table-container">
-            <select id="walletsType" onchange="codeOnChange()">
-               <option>EVM Address</option>
-               <option>Starknet Address</option>
-               <option>Aptos Address</option>
-               <option>Harmony Address</option>
-               <option>Atom Address</option>
-            </select>
-         </div>
+<!--         <div class="table-container">-->
+<!--            <select id="walletsType" onchange="codeOnChange()">-->
+<!--               <option>EVM Address</option>-->
+<!--               <option>Starknet Address</option>-->
+<!--               <option>Aptos Address</option>-->
+<!--               <option>Harmony Address</option>-->
+<!--               <option>Atom Address</option>-->
+<!--            </select>-->
+<!--         </div>-->
          <div class="table-container" id="table-container">
             <div class="text-area-container">
                <div class="line-numbers" id="addresses-line-numbers"></div>
-               <textarea id="addresses" rows="20" cols="50" placeholder="Addresses for OKX" autofocus onpaste="splitTextOnPaste(event, 'addresses')"                       oninput="codeOnChange()"></textarea>
+               <textarea id="addresses" style="width:500px;" rows="20" cols="50" placeholder="Addresses" autofocus onpaste="splitTextOnPaste(event, 'addresses')"                       oninput="codeOnChange()"></textarea>
             </div>
             <div class="text-area-container">
                <div class="line-numbers" id="names-line-numbers"></div>
-               <textarea id="names" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"                       oninput="codeOnChange()"></textarea>
+               <textarea id="names" style="width:300px;" rows="20" cols="50" placeholder="Names" onpaste="splitTextOnPaste(event, 'names')"                       oninput="codeOnChange()"></textarea>
             </div>
          </div>
          <div>
